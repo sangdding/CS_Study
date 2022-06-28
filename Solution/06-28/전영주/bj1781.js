@@ -1,3 +1,5 @@
+// 시간초과 뜸. 우선순위큐로 풀어야 해결가능
+
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = fs.readFileSync(filePath).toString().trim().split("\n");
