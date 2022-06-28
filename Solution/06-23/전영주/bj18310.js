@@ -14,7 +14,6 @@ const [n, ...arr] = fs
   .trim()
   .split(/\s+/)
   .map(Number);
-console.log(arr);
 arr.sort(function (a, b) {
   return a - b;
 });
