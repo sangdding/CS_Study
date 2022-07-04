@@ -31,7 +31,7 @@ Step 2 SYN + ACK From Server – 서버는 SYN 요청을 받고 클라이언트�
 - ACK Number필드를 Sequence Number + 1 로 지정하고 SYN과 ACK 플래그 비트를 1로 설정한 새그먼트 전송 (Seq=y, Ack=x+1, SYN, ACK)
 - PORT 상태
   - Client : CLOSED
-  - Server : SYN_RCVACK로 응답하기를 기다리며 SYN_RECEIVED 상태가 된다.
+  - Server : ACK로 응답하기를 기다리며 SYN_RECEIVED 상태가 된다.
 
 Step 3 Client ACK – 클라이언트는 서버에게 ACK를 보내고 연결이 이루어지고 데이터 전송 시작.
 
