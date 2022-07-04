@@ -15,7 +15,7 @@
 
 <img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd6wyk4%2Fbtrlsi0dUFh%2FDSNUHLoKX8xYG4bg9YUkm1%2Fimg.png">
 
-##2. Sliding Window
+## 2. Sliding Window
 수신측에서 설정한 윈도우 크기만큼 송신 측에서 ACK없이 패킷을 전송할 수 있게한다. 윈도우 크기를 넘어서면
 이전 윈도우에 대한 ACK를 수신측은 송신측에 전달한다.
 > 윈도우의 크기는 호스트들이 초기에 통신을 하기 위해 3-way handshaking으로 연결을 맺을 때 수신 측의 윈도우 크기로 설정된다.
