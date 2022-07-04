@@ -6,7 +6,8 @@ osi 7계층 transport layer에서 사용하는 인터넷 표준 프로토콜로,
 ### 용어정리
 
 SYN(Synchronization): 연결 요청, 세션을 설정하는데 사용되며 초기에 시퀀스 번호를 보냄  
-ACK(Acknowledgement): 보낸 시퀀스 번호에 TCP계층에서의 길이 또는 양을 더한 것과 같은 값을 ACK에 포함하여 전송.
+ACK(Acknowledgement): 보낸 시퀀스 번호에 TCP계층에서의 길이 또는 양을 더한 것과 같은 값을 ACK에 포함하여 전송.   
+
 FIN (finish) : 세션을 종료시키는데 사용되며, 더 이상 보낸 데이터가 없음을 나타낸다.
 
 ---
