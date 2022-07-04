@@ -55,7 +55,9 @@ Half-Close 기법으로, 연결을 완전히 종료하지 않고 반만 종료�
 
 STEP 1 Client -> Server : FIN(+ACK) - 클라이언트가 연결을 종료하겠다는 FIN플래그를 전송한다.
 
-STEP 2 Server → Client : ACK - 서버는 확인메시지인 ACK를 보내고 자신의 통신이 끝날때까지 기다리는데 이 상태가 TIME_WAIT상태다.
+STEP 2 Server → Client : ACK - 서버는 확인메시지인 ACK를 보내고 자신의 통신이 끝날때까지 기다린다.   
+  - Client : TIME_WAIT
+  - Server : CLOSE_WAIT
 
 STEP 3 Server → Client : FIN - 서버가 통신이 끝났으면 연결이 종료되었다고 클라이언트에게 FIN플래그를 전송한다. 이후 승인 번호를 보내줄 때까지 기다니는 LAST_ACK 상태로 들어간다.
 
