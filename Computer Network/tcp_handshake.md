@@ -1,6 +1,6 @@
 ## TCP(Transmission Control Protocol)
 
-osi 7걔층 transport layer에서 사용하는 인터넷 표준 프로토콜로, Connection-Oriented 패킷 전송읋 제어하며, 데이터와 패킷이 보내진 순서대로 전달하는 것과 에러가 없음을 보장한다.(높은 신뢰성)  
+osi 7계층 transport layer에서 사용하는 인터넷 표준 프로토콜로, Connection-Oriented 패킷 전송 제어하며, 데이터와 패킷이 보내진 순서대로 전달하는 것과 에러가 없음을 보장한다.(높은 신뢰성)  
 3-way handshaking 과정을 통해 연결을 설정하고 4-way handshaking을 통해 해제한다.
 
 ### 용어정리
