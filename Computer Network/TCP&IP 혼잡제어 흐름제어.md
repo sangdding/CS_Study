@@ -55,18 +55,21 @@ ACK가 수신측으로 부터 전송이되어 확인이 되면, 윈도우의 크
 # TCP Congestion Policy
 ## 1. Taho TCP
 Slow start와 congestion avoidance를 사용한다.
-![img_3.png](resource/img_3.png)
+![img_3.png](resource/img_3.png)   
+
 먼저 패킷의 크기가 1부터 시작해 8이 되면 Time-out이 발생한다. (slow start) 이후 ssthresh를 Time-out이 발생한
 패킷의 길이 * 1/2로 설정하고, 패킷의 길이가 4에 도달하면 이후에는 길이가 1씩 증가한다. (Congestion avodiance) 
 만약 어느 지점에서 3개의 중복된 ACK를 수신하게 되면, 네트워크가 혼잡하다고 판단, ssthresh를 혼잡이 발생한
 패킷 길이의 1/2로 다시 설정한 후 앞의 과정을 반복한다.
 ## 2. Reno TCP
+![img_4.png](resource/img_4.png)   
+
 Taho TCP방식에 Fast Recovery가 추가된 방식이다. Congestion Avodiance까지는 똑같이 동작하나,
 만약 3개의 중복된 ACK를 받았다면, 윈도우의 크기를 6 + 3 으로 줄이고 Fast Recovery 상태로 들어간다.
 (앞에서 전송된 3개의 패킷을 포함하기 위함인 듯 하다.) 만약 새로운 ACK를 받았다면 윈도우의 크기를
 ssthresh로 줄이고 Additive Increase 형태로 증가한다. 하지만 3개의 중복된 ACK가 아닌 Time-out이 발생하면,
 Taho와 같이 윈도우의 크기를 1로 줄이게 된다.
-![img_4.png](resource/img_4.png)
+
 
 참고 자료   
 https://steady-coding.tistory.com/507   
