@@ -15,7 +15,7 @@
 
 <img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd6wyk4%2Fbtrlsi0dUFh%2FDSNUHLoKX8xYG4bg9YUkm1%2Fimg.png">
 
-##2. Sliding Window
+## 2. Sliding Window
 수신측에서 설정한 윈도우 크기만큼 송신 측에서 ACK없이 패킷을 전송할 수 있게한다. 윈도우 크기를 넘어서면
 이전 윈도우에 대한 ACK를 수신측은 송신측에 전달한다.
 > 윈도우의 크기는 호스트들이 초기에 통신을 하기 위해 3-way handshaking으로 연결을 맺을 때 수신 측의 윈도우 크기로 설정된다.
@@ -27,7 +27,7 @@
 
 #### 재전송
 송신측은 일정시간동안 수신측으로부터 ACK를 받지 못하면, 패킷을 재전송한다. 만약 재전송을 했는데
-패킷이 소실된 경우가 아닌 수신 측의 버퍼에 남는 공간이 없는 경우면 문제가 생긴다. 따라서 송신측은
+패킷이 소실된 경우가 아닌 수신 측의 버퍼에 남는 공간이 없는 경우면 문제가 생긴다. 따라서 수신측은
 ACK를 보내면서 남은 버퍼의 크기도 함께 보내준다.
 
 # 혼잡제어
@@ -55,18 +55,21 @@ ACK가 수신측으로 부터 전송이되어 확인이 되면, 윈도우의 크
 # TCP Congestion Policy
 ## 1. Taho TCP
 Slow start와 congestion avoidance를 사용한다.
-![img_3.png](resource/img_3.png)
+![img_3.png](resource/img_3.png)   
+
 먼저 패킷의 크기가 1부터 시작해 8이 되면 Time-out이 발생한다. (slow start) 이후 ssthresh를 Time-out이 발생한
 패킷의 길이 * 1/2로 설정하고, 패킷의 길이가 4에 도달하면 이후에는 길이가 1씩 증가한다. (Congestion avodiance) 
 만약 어느 지점에서 3개의 중복된 ACK를 수신하게 되면, 네트워크가 혼잡하다고 판단, ssthresh를 혼잡이 발생한
 패킷 길이의 1/2로 다시 설정한 후 앞의 과정을 반복한다.
 ## 2. Reno TCP
+![img_4.png](resource/img_4.png)   
+
 Taho TCP방식에 Fast Recovery가 추가된 방식이다. Congestion Avodiance까지는 똑같이 동작하나,
 만약 3개의 중복된 ACK를 받았다면, 윈도우의 크기를 6 + 3 으로 줄이고 Fast Recovery 상태로 들어간다.
 (앞에서 전송된 3개의 패킷을 포함하기 위함인 듯 하다.) 만약 새로운 ACK를 받았다면 윈도우의 크기를
 ssthresh로 줄이고 Additive Increase 형태로 증가한다. 하지만 3개의 중복된 ACK가 아닌 Time-out이 발생하면,
 Taho와 같이 윈도우의 크기를 1로 줄이게 된다.
-![img_4.png](resource/img_4.png)
+
 
 참고 자료   
 https://steady-coding.tistory.com/507   

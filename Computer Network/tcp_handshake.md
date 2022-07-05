@@ -1,12 +1,13 @@
 ## TCP(Transmission Control Protocol)
 
-osi 7걔층 transport layer에서 사용하는 인터넷 표준 프로토콜로, Connection-Oriented 패킷 전송읋 제어하며, 데이터와 패킷이 보내진 순서대로 전달하는 것과 에러가 없음을 보장한다.(높은 신뢰성)  
+osi 7계층 transport layer에서 사용하는 인터넷 표준 프로토콜로, Connection-Oriented 패킷 전송 제어하며, 데이터와 패킷이 보내진 순서대로 전달하는 것과 에러가 없음을 보장한다.(높은 신뢰성)  
 3-way handshaking 과정을 통해 연결을 설정하고 4-way handshaking을 통해 해제한다.
 
 ### 용어정리
 
 SYN(Synchronization): 연결 요청, 세션을 설정하는데 사용되며 초기에 시퀀스 번호를 보냄  
-ACK(Acknowledgement): 보낸 시퀀스 번호에 TCP계층에서의 길이 또는 양을 더한 것과 같은 값을 ACK에 포함하여 전송.
+ACK(Acknowledgement): 보낸 시퀀스 번호에 TCP계층에서의 길이 또는 양을 더한 것과 같은 값을 ACK에 포함하여 전송.   
+
 FIN (finish) : 세션을 종료시키는데 사용되며, 더 이상 보낸 데이터가 없음을 나타낸다.
 
 ---
@@ -30,7 +31,7 @@ Step 2 SYN + ACK From Server – 서버는 SYN 요청을 받고 클라이언트�
 - ACK Number필드를 Sequence Number + 1 로 지정하고 SYN과 ACK 플래그 비트를 1로 설정한 새그먼트 전송 (Seq=y, Ack=x+1, SYN, ACK)
 - PORT 상태
   - Client : CLOSED
-  - Server : SYN_RCVACK로 응답하기를 기다리며 SYN_RECEIVED 상태가 된다.
+  - Server : ACK로 응답하기를 기다리며 SYN_RECEIVED 상태가 된다.
 
 Step 3 Client ACK – 클라이언트는 서버에게 ACK를 보내고 연결이 이루어지고 데이터 전송 시작.
 
@@ -54,7 +55,9 @@ Half-Close 기법으로, 연결을 완전히 종료하지 않고 반만 종료�
 
 STEP 1 Client -> Server : FIN(+ACK) - 클라이언트가 연결을 종료하겠다는 FIN플래그를 전송한다.
 
-STEP 2 Server → Client : ACK - 서버는 확인메시지인 ACK를 보내고 자신의 통신이 끝날때까지 기다리는데 이 상태가 TIME_WAIT상태다.
+STEP 2 Server → Client : ACK - 서버는 확인메시지인 ACK를 보내고 자신의 통신이 끝날때까지 기다린다.   
+  - Client : TIME_WAIT
+  - Server : CLOSE_WAIT
 
 STEP 3 Server → Client : FIN - 서버가 통신이 끝났으면 연결이 종료되었다고 클라이언트에게 FIN플래그를 전송한다. 이후 승인 번호를 보내줄 때까지 기다니는 LAST_ACK 상태로 들어간다.
 
